@@ -22,9 +22,8 @@ jobs:
     - name: Login to Docker Hub
       run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
     
-
     - name: Build and Push Docker Image
       run: |
         docker buildx create --use
-        docker buildx build --platform linux/amd64,linux/arm64 -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest .
+        docker buildx build --platform linux/amd64,linux/arm64 -t bhavya04/work:latest .
         docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
